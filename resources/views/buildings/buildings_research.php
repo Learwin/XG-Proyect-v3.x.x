@@ -1,9 +1,7 @@
 <br />
 <div id="content">
     <font color="#ff0000">{noresearch}</font>
-    <table align="top" width="530">
-        <tr>
-            {technolist}
-        </tr>
-    </table>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; width: 100%;">
+        {technolist}
+    </div>
 </div>

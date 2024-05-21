@@ -1,6 +1,6 @@
 <tr>
     <td>
-        <div align="center">
+        <div align="left">
             <span style="color: #{{ $color }}">
                 {!! $menu_link !!}
             </span>

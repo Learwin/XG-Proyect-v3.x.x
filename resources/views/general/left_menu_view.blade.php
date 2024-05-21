@@ -7,50 +7,34 @@
     </script>
     <center>
         <div id="menu">
-            <p style="width:110px;">
+            <p>
                 <NOBR>
                     {{ $lm_players }} <strong>{!! $user_name !!}</strong>
                 </NOBR>
             </p>
-            <table width="110" cellspacing="0" cellpadding="0">
+            <table width="100%">
                 <tr>
                     <td>
-                        <img src="{{ $dpath }}menu/ogame-produktion.jpg" width="110" height="40" />
+                        <img src="{{ $dpath }}menu/ogame-produktion.jpg" width="100%"/>
                     </td>
                 </tr>
                 {!! $menu_block1 !!}
                 <tr>
                     <td>
-                        <img src="{{ $dpath }}menu/info-help.jpg" width="110" height="19">
+                        <img src="{{ $dpath }}menu/info-help.jpg" width="100%" height="19">
                     </td>
                 </tr>
                 {!! $menu_block2 !!}
                 <tr>
                     <td>
-                        <img src="{{ $dpath }}menu/user-menu.jpg" width="110" height="35">
+                        <img src="{{ $dpath }}menu/user-menu.jpg" width="100%" height="35">
                     </td>
                 </tr>
                 {!! $menu_block3 !!}
                 {!! $admin_link !!}
                 <tr>
                     <td>
-                        <img src="{{ $dpath }}menu/info-help.jpg" width="110" height="19">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div style="text-align:center">
-                            {{ $servername }} ({!! $changelog !!})
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div style="text-align:center">
-                            <span style="color:#FFFFFF">
-                                <a href="#" title="Powered by XG Proyect {{ $version }} &copy; 2008 - {{ $year }} GNU General Public License">&copy; 2008 - {{ $year }}</a>
-                            </span>
-                        </div>
+                        <img src="{{ $dpath }}menu/info-help.jpg" width="100%" height="19">
                     </td>
                 </tr>
             </table>
