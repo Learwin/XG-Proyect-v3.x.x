@@ -1,4 +1,4 @@
-<div style="display: flex; gap: 0.5rem; flex-direction: column; width: 250px; border: 1px solid #415680; padding: 0.5rem; background-color: #41568073;">
+<div class="upgrade-item">
     <div>
         <a href="game.php?page=infos&gid={tech_id}">
             <img border=0 src="{dpath}elements/{tech_id}.gif" align="top" width=120 height=120>

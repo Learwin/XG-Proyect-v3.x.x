@@ -515,21 +515,3 @@ textarea {
    -khtml-opacity: 0.7;
    opacity: 0.7;
 }
-
-.upgrade-container {
-   display: flex;
-   gap: 1rem;
-   flex-wrap: wrap;
-   justify-content: center;
-   width: 100%;
-}
-
-.upgrade-item {
-   display: flex;
-   gap: 0.5rem;
-   flex-direction: column;
-   width: 250px;
-   border: 1px solid #415680;
-   padding: 0.5rem;
-   background-color: #41568073;
-}
