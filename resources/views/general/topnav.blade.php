@@ -56,6 +56,11 @@
                         <td class="header" width="90">{!! $re_energy !!}</td>
                     </tr>
 					<tr class="header" style="text-align:center">
+                        <td class="header" width="90">{!! $re_metal_hour !!}</td>
+                        <td class="header" width="90">{!! $re_crystal_hour !!}</td>
+                        <td class="header" width="90">{!! $re_deuterium_hour !!}</td>
+                    </tr>
+					<tr class="header" style="text-align:center">
                         <td class="header" width="90">{!! $re_max_metal !!}</td>
                         <td class="header" width="90">{!! $re_max_crystal !!}</td>
                         <td class="header" width="90">{!! $re_max_deuterium !!}</td>
