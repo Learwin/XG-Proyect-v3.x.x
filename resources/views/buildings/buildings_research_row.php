@@ -6,10 +6,15 @@
     </div>
     <div>
         <a href="game.php?page=infos&gid={tech_id}">{tech_name}</a> {tech_level}<br>{tech_descr}<br>
-        {tech_price}
-        {search_time}
+        
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;justify-content: left; align-items: center;" >
+            <div style="display: flex; gap: 5px; flex-direction: column;">
+                {tech_price}
+            </div>
+            {search_time}
+        </div>
     </div>
-    <div style="margin-top: auto;">
+    <div style="margin-top: auto; font-size: 16px;">
         {tech_link}
     </div>
 </div>

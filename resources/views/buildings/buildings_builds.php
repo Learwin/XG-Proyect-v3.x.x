@@ -16,8 +16,7 @@
             <a href="game.php?page=infos&gid={i}">{n}</a>{nivel}
 
             <div style="display: flex; flex-direction: column; gap: 0.5rem;justify-content: left; align-items: center;" >
-                <br>
-                <div style="display: flex; gap: 5px;">
+                <div style="display: flex; gap: 5px; flex-direction: column;">
                     {price}
                 </div>
                 {time}
