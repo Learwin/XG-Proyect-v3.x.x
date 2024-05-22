@@ -59,13 +59,13 @@
             <td colspan="9" class="c">
                 <table border="0" width="100%">
                     <tr>
-                        <td style="background-color: transparent;" align="center">Flotten von Allianzmitgliedern</td>
+                        <td style="background-color: transparent;" align="center">{fl_a_ally_fleet}</td>
                     </tr>
                 </table>
             </td>
         </tr>
 		<tr height="20">
-            <th>Spielername</th>
+            <th>{fl_username}</th>
             <th>{fl_mission}</th>
             <th>{fl_ammount}</th>
             <th>{fl_beginning}</th>

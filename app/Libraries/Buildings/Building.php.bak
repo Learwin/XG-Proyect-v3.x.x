@@ -152,7 +152,7 @@ class Building
     public function isQueueFull()
     {
         //$queue_size = 1;
-		$queue_size = MAX_BUILDING_QUEUE_SIZE;
+		$queue_size = MAX_BUILDING_QUEUE_SIZE;		
 
         if (OfficiersLib::isOfficierActive($this->_user['premium_officier_commander'])) {
             $queue_size = MAX_BUILDING_QUEUE_SIZE;

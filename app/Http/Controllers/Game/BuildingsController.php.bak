@@ -170,8 +170,7 @@ class BuildingsController extends BaseController
 
         $queue = $this->showQueue();
 
-        //if ($this->_commander_active && $queue['lenght'] > 0) {
-		if ($queue['lenght'] > 0) {	
+        if ($this->_commander_active && $queue['lenght'] > 0) {
             $return['BuildListScript'] = Developments::currentBuilding($this->getCurrentPage(), $this->langs->language);
             $return['BuildList'] = $queue['buildlist'];
         }
@@ -318,7 +317,7 @@ class BuildingsController extends BaseController
         }
 
         // if a queue was already set
-        //if ($this->_commander_active) {
+        if ($this->_commander_active) {
             if ($is_queue_full) {
                 return $this->buildButton('not_allowed');
             }
@@ -326,16 +325,14 @@ class BuildingsController extends BaseController
             if ($queue_element > 0) {
                 return UrlHelper::setUrl($build_url, $this->buildButton('allowed_for_queue'));
             }
-        //}
+        }
 
         // if something is being build
-		/*
         if (!$this->_commander_active) {
             if ($queue_element > 0) {
                 return $this->buildCountDownClock($building_id);
             }
         }
-		*/
 
         if (!$is_development_payable) {
             return $this->buildButton('not_allowed');
