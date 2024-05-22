@@ -1,8 +1,10 @@
 <br />
 <div id="content">
     {BuildListScript}
+    <div style="display: flex; gap: 0.5rem; flex-direction: column; width: 250px; border: 1px solid #415680; padding: 0.5rem; background-color: #41568073;">
+            {BuildList}
+    </div>
     <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; width: 100%;">
-        {BuildList}
         {list_of_buildings}
         <div style="display: flex; gap: 0.5rem; flex-direction: column; width: 250px; border: 1px solid #415680; padding: 0.5rem; background-color: #41568073;">
             <div class="l" width="80" height="80">
@@ -13,7 +15,9 @@
             <div class="l" >
                 <a href="game.php?page=infos&gid={i}">{n}</a>{nivel}<br>
                 {descriptions}<br>
-                {price}
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    {price}
+                </div>
                 {time}
             </div>
             <div class="k" style="margin-top: auto;">{click}</div>
