@@ -1,5 +1,4 @@
 
-<link rel="stylesheet" href="../../../public/css/newStyles.css">
 <br />
 <div id="content">
     {BuildListScript}
