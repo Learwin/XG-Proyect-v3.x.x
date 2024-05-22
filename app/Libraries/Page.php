@@ -538,6 +538,13 @@ class Page
 		$parse['re_max_metal'] = 'Max. ' . FormatLib::prettyNumber(Production::maxStorable($this->current_planet['building_metal_store']));
 		$parse['re_max_crystal'] = 'Max. ' . FormatLib::prettyNumber(Production::maxStorable($this->current_planet['building_crystal_store']));
 		$parse['re_max_deuterium'] = 'Max. ' . FormatLib::prettyNumber(Production::maxStorable($this->current_planet['building_deuterium_tank']));
+		
+		$metal_hour = FormatLib::prettyNumber($this->current_planet['planet_metal_perhour'] / 60);
+		$crystal_hour = FormatLib::prettyNumber($this->current_planet['planet_crystal_perhour'] / 60);
+		$deuterium_hour = FormatLib::prettyNumber($this->current_planet['planet_deuterium_perhour'] / 60);
+		$parse['re_metal_hour'] = FormatLib::colorNumber($metal_hour, '+ ' . $metal_hour . ' / min');
+		$parse['re_crystal_hour'] = FormatLib::colorNumber($crystal_hour, '+ ' . $crystal_hour . ' / min');
+		$parse['re_deuterium_hour'] = FormatLib::colorNumber($deuterium_hour, '+ ' . $deuterium_hour . ' / min');
 
         return $this->template->set(
             'general/topnav',
