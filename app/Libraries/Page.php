@@ -534,6 +534,10 @@ class Page
         $parse['re_deuterium'] = $deuterium;
         $parse['re_darkmatter'] = $darkmatter;
         $parse['re_energy'] = $energy;
+		
+		$parse['re_max_metal'] = 'Max. ' . FormatLib::prettyNumber(Production::maxStorable($this->current_planet['building_metal_store']));
+		$parse['re_max_crystal'] = 'Max. ' . FormatLib::prettyNumber(Production::maxStorable($this->current_planet['building_crystal_store']));
+		$parse['re_max_deuterium'] = 'Max. ' . FormatLib::prettyNumber(Production::maxStorable($this->current_planet['building_deuterium_tank']));
 
         return $this->template->set(
             'general/topnav',
