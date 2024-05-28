@@ -425,6 +425,14 @@ class UpdatesLibrary
         $game_crystal_basic_income = Functions::readConfig('crystal_basic_income');
         $game_deuterium_basic_income = Functions::readConfig('deuterium_basic_income');
 
+		$game_st_resource_multiplier = Functions::readConfig('st_resource_multiplier');
+		
+		if ($game_st_resource_multiplier > 0){
+			if ($current_user['user_resi_factor'] != 1){
+				$game_resource_multiplier = $game_resource_multiplier * $current_user['user_resi_factor'];
+			}
+		}
+
         if ($current_user['preference_vacation_mode'] > 0) {
             $game_metal_basic_income = 0;
             $game_crystal_basic_income = 0;

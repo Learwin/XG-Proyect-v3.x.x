@@ -151,6 +151,8 @@ class StatisticsLibrary
         if (empty($all_stats_data) or count($all_stats_data) == 0) {
             return;
         }
+		
+		$firstPlayerPoints = 0;
 
         // BUILD ALL THE ARRAYS
         foreach ($all_stats_data as $CurUser) {
@@ -168,6 +170,9 @@ class StatisticsLibrary
 
             $total['old_rank'][$CurUser['user_statistic_user_id']] = $CurUser['user_statistic_total_rank'];
             $total['points'][$CurUser['user_statistic_user_id']] = $CurUser['total_points'];
+			
+			if ($firstPlayerPoints < $CurUser['total_points'])
+				$firstPlayerPoints = $CurUser['total_points'];
         }
 
         // ORDER THEM FROM HIGHEST TO LOWEST
@@ -234,16 +239,43 @@ class StatisticsLibrary
                         user_statistic_total_points,
                         user_statistic_total_old_rank,
                         user_statistic_total_rank,
-                        user_statistic_update_time) VALUES ';
+                        user_statistic_update_time,
+						user_statistic_prct) VALUES ';
+						
+		$updateUser = 'INSERT INTO ' . USERS . '
+						(user_id,
+						user_resi_factor) VALUES ';
 
         // SET VARIABLES
         $values = '';
+		$userValues = '';
+		
+		$resi_factor = 1;
 
+		$prct = 0;
         // TOTAL POINTS
         // UPDATE QUERY DYNAMIC BLOCK
         foreach ($total as $key => $value) {
             if ($key == 'points') {
                 foreach ($value as $user_id => $data) {
+					$prct = 0;
+					if ($firstPlayerPoints > 0)
+						$prct = $total['points'][$user_id] / $firstPlayerPoints * 100;
+					
+					if ($prct <= 100)
+						$resi_factor = Functions::readConfig('st_resource_multi_100');
+					if ($prct <= 80)
+						$resi_factor = Functions::readConfig('st_resource_multi_80');
+					if ($prct <= 60)
+						$resi_factor = Functions::readConfig('st_resource_multi_60');
+					if ($prct <= 40)
+						$resi_factor = Functions::readConfig('st_resource_multi_40');
+					if ($prct <= 20)
+						$resi_factor = Functions::readConfig('st_resource_multi_20');
+						
+					$userValues .= '(' . $user_id . ',
+								' . $resi_factor . '),';
+					
                     $values .= '(' . $user_id . ',
                                 ' . $build['old_rank'][$user_id] . ',
                                 ' . $build['rank'][$user_id] . ',
@@ -256,13 +288,15 @@ class StatisticsLibrary
                                 ' . $total['points'][$user_id] . ',
                                 ' . $total['old_rank'][$user_id] . ',
                                 ' . $rank['tota']++ . ',
-                                ' . $this->time . '),';
+                                ' . $this->time . ',
+								' . $prct . '),';
                 }
             }
         }
 
         // REMOVE LAST COMMA
         $values = substr_replace($values, '', -1);
+		$userValues = substr_replace($userValues, '', -1);
 
         // FINISH UPDATE QUERY
         $update_query .= $values;
@@ -278,10 +312,16 @@ class StatisticsLibrary
 								user_statistic_total_points = VALUES(user_statistic_total_points),
 								user_statistic_total_old_rank = VALUES(user_statistic_total_old_rank),
 								user_statistic_total_rank = VALUES(user_statistic_total_rank),
-								user_statistic_update_time = VALUES(user_statistic_update_time);';
+								user_statistic_update_time = VALUES(user_statistic_update_time),
+								user_statistic_prct = VALUES(user_statistic_prct);';
+		$updateUser .= $userValues;
+		$updateUser .= ' ON DUPLICATE KEY UPDATE
+								user_resi_factor = VALUES(user_resi_factor);';
 
         // RUN QUERY
         $this->statisticsLibraryModel->runSingleQuery($update_query);
+		
+		$this->statisticsLibraryModel->runSingleQuery($updateUser);
 
         // MEMORY CLEAN UP
         unset($all_stats_data, $build, $defs, $ships, $tech, $rank, $update_query, $values);

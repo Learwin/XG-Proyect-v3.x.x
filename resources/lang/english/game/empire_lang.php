@@ -11,4 +11,5 @@ $lang = [
     'em_technology' => 'Research',
     'em_ships' => 'Fleet',
     'em_defenses' => 'Defenses',
+	'em_sum' => 'Summe',
 ];

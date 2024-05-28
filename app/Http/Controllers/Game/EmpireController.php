@@ -63,6 +63,10 @@ class EmpireController extends BaseController
     {
         $empire_data = $this->empireModel->getAllPlayerData((int) $this->user['user_id']);
 
+		foreach (['metal', 'crystal', 'deuterium'] as $element) {
+			$empire[$element . '_current_sum_np'] = 0;
+			$empire[$element . '_production_sum_np'] = 0;
+		}
         foreach ($empire_data as $planet) {
             // general data
             foreach (['image', 'name', 'coords', 'fields'] as $element) {
@@ -72,7 +76,15 @@ class EmpireController extends BaseController
             // resources data
             foreach (['metal', 'crystal', 'deuterium', 'energy'] as $element) {
                 $empire[$element . '_row'][] = $this->setResources($planet, $element);
-            }
+				if ($element != 'energy'){
+					$empire[$element . '_current_sum_np'] = $empire[$element . '_current_sum_np'] + $planet['planet_' . $element];
+					$empire[$element . '_production_sum_np'] = $empire[$element . '_production_sum_np'] + $planet['planet_' . $element . '_perhour'] + Functions::readConfig($element . '_basic_income');
+				}
+			}
+			foreach (['metal', 'crystal', 'deuterium'] as $element) {
+				$empire[$element . '_current_sum'] = FormatLib::prettyNumber($empire[$element . '_current_sum_np']);
+				$empire[$element . '_production_sum'] = FormatLib::prettyNumber($empire[$element . '_production_sum_np']);
+			}
 
             // structures and technologies data
             foreach (['resources', 'facilities', 'fleet', 'defenses', 'missiles', 'tech'] as $element) {
@@ -180,6 +192,8 @@ class EmpireController extends BaseController
             'planet_production' => (
                 FormatLib::prettyNumber($planet['planet_' . $resource . '_perhour'] + Functions::readConfig($resource . '_basic_income'))
             ),
+			'current_amount' => $planet['planet_' . $resource],
+			'production' => $planet['planet_' . $resource . '_perhour'] + Functions::readConfig($resource . '_basic_income'),
         ];
     }
 

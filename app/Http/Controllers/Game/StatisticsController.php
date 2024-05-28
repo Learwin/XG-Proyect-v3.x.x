@@ -136,6 +136,7 @@ class StatisticsController extends BaseController
 
                 $parse['player_rankplus'] = $this->rank_difference($ranking);
                 $parse['player_points'] = FormatLib::prettyNumber($StatRow['user_statistic_' . $Order]);
+				$parse['player_prct'] = FormatLib::prettyNumber($StatRow['user_statistic_prct']);
                 $parse['stat_values'] .= $this->template->set(
                     'stat/stat_playertable',
                     $parse

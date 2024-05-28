@@ -55,6 +55,14 @@ class ResourcesController extends BaseController
         $game_deuterium_basic_income = Functions::readConfig('deuterium_basic_income');
         $game_energy_basic_income = Functions::readConfig('energy_basic_income');
         $game_resource_multiplier = Functions::readConfig('resource_multiplier');
+		
+		$game_st_resource_multiplier = Functions::readConfig('st_resource_multiplier');
+		
+		if ($game_st_resource_multiplier > 0){
+			if ($this->user['user_resi_factor'] != 1){
+				$game_resource_multiplier = $game_resource_multiplier * $this->user['user_resi_factor'];
+			}
+		}
 
         if ($this->user['preference_vacation_mode'] > 0 or $this->planet['planet_type'] == PlanetTypesEnumerator::MOON) {
             $game_metal_basic_income = 0;

@@ -80,7 +80,8 @@ class StatisticsLibrary extends Model
                     + us.`user_statistic_defenses_points`
                     + us.`user_statistic_ships_points`
                     + us.`user_statistic_technology_points`
-                ) AS total_points
+                ) AS total_points,
+				us.`user_statistic_prct`
             FROM ' . USERS_STATISTICS . ' us
             INNER JOIN ' . USERS . ' AS u
                 ON us.`user_statistic_user_id` = u.`user_id` AND u.`user_authlevel` <= ' . Functions::readConfig('stat_admin_level') . '

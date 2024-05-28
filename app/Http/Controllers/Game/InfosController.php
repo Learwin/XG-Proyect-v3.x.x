@@ -447,6 +447,13 @@ class InfosController extends BaseController
         $BuildLevel = ($current_built_lvl > 0) ? $current_built_lvl : 1;
         $BuildEnergy = $this->user['research_energy_technology'];
         $game_resource_multiplier = Functions::readConfig('resource_multiplier');
+		$game_st_resource_multiplier = Functions::readConfig('st_resource_multiplier');
+		
+		if ($game_st_resource_multiplier > 0){
+			if ($this->user['user_resi_factor'] != 1){
+				$game_resource_multiplier = $game_resource_multiplier * $this->user['user_resi_factor'];
+			}
+		}
 
         // BOOST
         $geologe_boost = 1 + (1 * (OfficiersLib::isOfficierActive($this->user['premium_officier_geologist']) ? GEOLOGUE : 0));

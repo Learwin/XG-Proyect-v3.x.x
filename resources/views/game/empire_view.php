@@ -41,6 +41,7 @@
             </tr>
             <tr>
                 <td class="c" colspan="{amount_of_planets}" align="left">{em_resources}</td>
+				<td class="c">{em_sum}</td>
             </tr>
             <tr>
                 <th width="75px">{metal}</th>
@@ -49,6 +50,7 @@
                     <a href="game.php?page=resources&cp={planet_id}&re=0&planettype={planet_type}">{planet_current_amount}</a> / {planet_production}
                 </th>
                 {/metal_row}
+				<th>{metal_current_sum} / {metal_production_sum}</th>
             </tr>
             <tr>
                 <th width="75px">{crystal}</th>
@@ -57,6 +59,7 @@
                     <a href="game.php?page=resources&cp={planet_id}&re=0&planettype={planet_type}">{planet_current_amount}</a> / {planet_production}
                 </th>
                 {/crystal_row}
+				<th>{crystal_current_sum} / {crystal_production_sum}</th>
             </tr>
             <tr>
                 <th width="75px">{deuterium}</th>
@@ -65,6 +68,7 @@
                     <a href="game.php?page=resources&cp={planet_id}&re=0&planettype={planet_type}">{planet_current_amount}</a> / {planet_production}
                 </th>
                 {/deuterium_row}
+				<th>{deuterium_current_sum} / {deuterium_production_sum}</th>
             </tr>
             <tr>
                 <th width="75px">{energy}</th>

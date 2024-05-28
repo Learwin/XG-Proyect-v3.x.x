@@ -51,4 +51,11 @@ $lang = [
     <br>
     Wir können also jeden Spieler angreifen, der mehr als 2 Punkte hat.',
     'se_all_ok_message' => 'Änderungen erfolgreich gespeichert!',
+	'se_catchup' => 'Cath-Up Mechanik',
+	'se_catchup_active' => 'Aktivieren',
+	'se_catchup_100' => 'Faktor unter 100%',
+	'se_catchup_80' => 'Faktor unter 80%',
+	'se_catchup_60' => 'Faktor unter 60%',
+	'se_catchup_40' => 'Faktor unter 40%',
+	'se_catchup_20' => 'Faktor unter 20%',
 ];

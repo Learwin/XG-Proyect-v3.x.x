@@ -4,4 +4,5 @@
     <td class="c">{st_player}</td>
     <td class="c">{st_actions}</td>
     <td class="c">{st_points}</td>
+	<td class="c">{st_prct}</td>
 </tr>

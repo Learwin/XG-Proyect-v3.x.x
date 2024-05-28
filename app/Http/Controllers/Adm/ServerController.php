@@ -176,6 +176,38 @@ class ServerController extends BaseController
         if (isset($_POST['noobprotectionmulti']) && is_numeric($_POST['noobprotectionmulti'])) {
             $this->game_config['noobprotectionmulti'] = $_POST['noobprotectionmulti'];
         }
+		
+		// Catch-Up mechanic
+        if (isset($_POST['catchup']) && $_POST['catchup'] == 'on') {
+            $this->game_config['st_resource_multiplier'] = 1;
+        } else {
+            $this->game_config['st_resource_multiplier'] = 0;
+        }
+		
+		// factor below 100%
+		if (isset($_POST['catchup100']) && is_numeric($_POST['catchup100'])) {
+            $this->game_config['st_resource_multi_100'] = $_POST['catchup100'];
+        }
+		
+		// factor below 80%
+		if (isset($_POST['catchup80']) && is_numeric($_POST['catchup80'])) {
+            $this->game_config['st_resource_multi_80'] = $_POST['catchup80'];
+        }
+		
+		// factor below 60%
+		if (isset($_POST['catchup60']) && is_numeric($_POST['catchup60'])) {
+            $this->game_config['st_resource_multi_60'] = $_POST['catchup60'];
+        }
+		
+		// factor below 40%
+		if (isset($_POST['catchup40']) && is_numeric($_POST['catchup40'])) {
+            $this->game_config['st_resource_multi_40'] = $_POST['catchup40'];
+        }
+		
+		// factor below 20%
+		if (isset($_POST['catchup20']) && is_numeric($_POST['catchup20'])) {
+            $this->game_config['st_resource_multi_20'] = $_POST['catchup20'];
+        }
     }
 
     private function buildPage(): void
@@ -213,6 +245,12 @@ class ServerController extends BaseController
         $parse['noobprot'] = $this->game_config['noobprotection'] == 1 ? " checked = 'checked' " : '';
         $parse['noobprot2'] = $this->game_config['noobprotectiontime'];
         $parse['noobprot3'] = $this->game_config['noobprotectionmulti'];
+		$parse['catchup'] = $this->game_config['st_resource_multiplier'] == 1 ? " checked = 'checked' " : '';
+		$parse['catchup100'] = $this->game_config['st_resource_multi_100'];
+		$parse['catchup80'] = $this->game_config['st_resource_multi_80'];
+		$parse['catchup60'] = $this->game_config['st_resource_multi_60'];
+		$parse['catchup40'] = $this->game_config['st_resource_multi_40'];
+		$parse['catchup20'] = $this->game_config['st_resource_multi_20'];
 
         $this->page->displayAdmin(
             $this->template->set('adm/server_view', $parse)

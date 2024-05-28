@@ -318,6 +318,86 @@
                         </div>
                     </div>
                 </div>
+				<div class="card shadow mb-4">
+                    <!-- Card Header - Accordion -->
+                    <a href="#collapseCatchup" class="d-block card-header py-3" data-toggle="collapse"
+                        role="button" aria-expanded="true" aria-controls="collapseCatchup">
+                        <h6 class="m-0 font-weight-bold text-primary">{se_catchup}</h6>
+                    </a>
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse show" id="collapseCatchup" style="">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-borderless" width="100%" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>{se_catchup_active}</td>
+                                            <td>
+                                                <input name="catchup" {catchup} type="checkbox"
+                                                    class="form-check-input">
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <td>
+                                                <span>
+                                                    {se_catchup_100}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <input name="catchup100" value="{catchup100}" type="number"
+                                                    max="100" class="form-control">
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <td>
+                                                <span>
+                                                    {se_catchup_80}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <input name="catchup80" value="{catchup80}" type="number"
+                                                    max="100" class="form-control">
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <td>
+                                                <span>
+                                                    {se_catchup_60}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <input name="catchup60" value="{catchup60}" type="number"
+                                                    max="100" class="form-control">
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <td>
+                                                <span>
+                                                    {se_catchup_40}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <input name="catchup40" value="{catchup40}" type="number"
+                                                    max="100" class="form-control">
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <td>
+                                                <span>
+                                                    {se_catchup_20}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <input name="catchup20" value="{catchup20}" type="number"
+                                                    max="100" class="form-control">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </form>

@@ -4,6 +4,7 @@ $lang = [
     'st_player' => 'Spieler',
     'st_alliance' => 'Allianz',
     'st_points' => 'Punkte',
+	'st_prct' => '%',
     'st_fleets' => 'Flotte',
     'st_researh' => 'Forschung',
     'st_buildings' => 'Gebäude',
